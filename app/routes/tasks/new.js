@@ -2,15 +2,22 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	ajax: Ember.inject.service(),
+
+	model(){
+		// Inicialice un nuevo modelo de tipo Task
+		return this.store.createRecord('task', {});
+	},
+
 	actions: {
-		createTask(title, dueDate, description){
-			let promise = this.get('ajax').post('http://localhost:3000/tasks/crear', {
-				data: {
-					title: title,
-					due_date: dueDate,
-					description: description
-				}
-			});
+		createTask(){
+			let promise = this.get('currentModel').save();
+			// let promise = this.get('ajax').post('http://localhost:3000/tasks/crear', {
+			// 	data: {
+			// 		title: this.get('currentModel.title'),
+			// 		due_date: this.get('currentModel.dueDate'),
+			// 		description: this.get('currentModel.description')
+			// 	}
+			// });
 
 			promise.then((response)=>{
 				// this.transitionTo('task', {task_id: response.id } );

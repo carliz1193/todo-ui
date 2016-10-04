@@ -5,10 +5,10 @@
 due_date:
 description:  --}}
 
-<form {{action 'createTask' title dueDate description on="submit" }}>
+<form {{action 'createTask' on="submit" }}>
 
-	<p>{{input value=title}}</p>
-	<p>{{input value=dueDate type="datetime-local"}}</p>
-	<p>{{textarea value=description}}</p>
+	<p>{{input value=model.title}}</p>
+	<p>{{input value=model.dueDate type="datetime-local"}}</p>
+	<p>{{textarea value=model.description}}</p>
 	<button type="submit">Create</button>
 </form>
