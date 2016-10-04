@@ -1,1 +1,11 @@
-<p>HOLA</p>
+
+<ul>
+{{#each model as |item|}}
+	<li>
+		{{#link-to 'task' item.id}}
+			{{item.title}}
+		{{/link-to}}
+		<button {{action 'destroyTask' item on='click'}} >Eliminar</button>
+	</li>
+{{/each}}
+</ul>

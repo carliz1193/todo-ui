@@ -1,0 +1,14 @@
+<h1>New Task</h1>
+
+
+{{!-- title:
+due_date:
+description:  --}}
+
+<form {{action 'createTask' title dueDate description on="submit" }}>
+
+	<p>{{input value=title}}</p>
+	<p>{{input value=dueDate type="datetime-local"}}</p>
+	<p>{{textarea value=description}}</p>
+	<button type="submit">Create</button>
+</form>
