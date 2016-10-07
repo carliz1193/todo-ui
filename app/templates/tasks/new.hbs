@@ -1,14 +1,48 @@
-<h1>New Task</h1>
+<div class="container">
+	<h1>New Task</h1>
+
+	<div class="row">
+		<div class="col-md-12">
+			<form {{action 'createTask' on="submit" }}>
+
+				<div class="form-group">
+					<label>Title</label>
+					{{input value=model.title class="form-control"}}
+				</div>
+
+				<div class="form-group">
+					<label>Due date</label>
+					{{date-picker value=model.dueDate class="form-control"}}
+				</div>
+
+				<div class="form-group">
+					<label>Description</label>
+					{{textarea value=model.description class="form-control"}}
+				</div>
+
+				<button type="submit" class="btn btn-default">Create</button>
+			</form>
+		</div>
+	</div>
+</div>
 
 
-{{!-- title:
-due_date:
-description:  --}}
 
-<form {{action 'createTask' on="submit" }}>
 
-	<p>{{input value=model.title}}</p>
-	<p>{{input value=model.dueDate type="datetime-local"}}</p>
-	<p>{{textarea value=model.description}}</p>
-	<button type="submit">Create</button>
-</form>
+<div id="validationModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">No se pudo guardar</h4>
+      </div>
+      <div class="modal-body">
+        <p>Hay campos vacíos, debes llenar tood antes de guardar</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+

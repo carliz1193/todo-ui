@@ -6,18 +6,21 @@ export default Ember.Route.extend({
 	//model
 	//afterModel
 	model: function(){
-		let promise = this.get('ajax').request('http://localhost:3000/tasks/list');
+		//let promise = this.get('ajax').request('http://localhost:3000/tasks/list');
+		//
+		return this.store.findAll('task');
 
-		return promise.then(function(data){
-			return data.tasks;
-		}.bind(this));
+		// return promise.then(function(data){
+		// 	return data.tasks;
+		// }.bind(this));
 			// return this.get('ajax').request('http://localhost:3000/tasks/list');
 	},
 	actions:{
 		destroyTask(item){
 
+			let promise = item.destroyRecord();
 
-			let promise = this.get('ajax').del('http://localhost:3000/tasks/' + item.id + '/delete');
+			// let promise = this.get('ajax').del('http://localhost:3000/tasks/' + item.id + '/delete');
 
 			// A)
 			// promise.then((function(){

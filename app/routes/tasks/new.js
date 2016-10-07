@@ -10,21 +10,30 @@ export default Ember.Route.extend({
 
 	actions: {
 		createTask(){
-			let promise = this.get('currentModel').save();
-			// let promise = this.get('ajax').post('http://localhost:3000/tasks/crear', {
-			// 	data: {
-			// 		title: this.get('currentModel.title'),
-			// 		due_date: this.get('currentModel.dueDate'),
-			// 		description: this.get('currentModel.description')
-			// 	}
-			// });
+			let currentModel = this.get('currentModel');
 
-			promise.then((response)=>{
-				// this.transitionTo('task', {task_id: response.id } );
-				this.transitionTo('home');
-			}).catch(()=>{
-				debugger
-			});
+			if(currentModel.get('anyFieldEmpty')){
+
+				$('#validationModal').modal('show');
+
+			} else {
+				let promise = currentModel.save();
+
+				// let promise = this.get('ajax').post('http://localhost:3000/tasks/crear', {
+				// 	data: {
+				// 		title: this.get('currentModel.title'),
+				// 		due_date: this.get('currentModel.dueDate'),
+				// 		description: this.get('currentModel.description')
+				// 	}
+				// });
+
+				promise.then((response)=>{
+					// this.transitionTo('task', {task_id: response.id } );
+					this.transitionTo('home');
+				}).catch(()=>{
+					debugger
+				});
+			}
 
 		}
 	}
