@@ -8,9 +8,17 @@
 			{{/link-to}}
 		</p>
 
+		<p>
+			{{input value=query class="form-control"}}
+		</p>
+
+		<p>
+			{{tasksCountLabel}}
+		</p>
+
 			<div class="list-group">
 
-				{{#each model as |item|}}
+				{{#each filteredModel as |item|}}
 
 					{{#link-to 'task' item.id class="list-group-item"}}
 						<button {{action 'destroyTask' item on='click' bubbles=false}} class="badge btn">X</button>
