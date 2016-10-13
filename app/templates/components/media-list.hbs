@@ -1,0 +1,14 @@
+<div class="list-group">
+
+	{{#each contentArray as |item|}}
+
+		{{#link-to 'task' item.id class="list-group-item"}}
+			<button {{action 'destroyTaskInComponent' item on='click' bubbles=false}} class="badge btn">X</button>
+
+			<h4>{{yield 'sectionTitle' item}}</h4>
+			<p>{{yield 'sectionBody' item}}</p>
+		{{/link-to}}
+
+
+		{{/each}}
+</div>

@@ -17,6 +17,7 @@ export default Ember.Route.extend({
 	},
 	actions:{
 		destroyTask(item){
+			console.log('Soy el destroyTask que llamó la ruta')
 
 			let promise = item.destroyRecord();
 

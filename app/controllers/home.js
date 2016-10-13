@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	query: null,
+	anotherArray: [1,2,3,4,5],
 	filteredModel: Ember.computed('query', 'model.[]', function(){
 		let query = this.get('query');
 		let model = this.get('model');
@@ -25,5 +26,12 @@ export default Ember.Controller.extend({
 				return `${filteredModelLength} of ${modelLength} tasks`;
 			}
 		}
-	})
+	}),
+
+	actions:{
+		destroyTaskInController(item){
+			console.log('Soy el destroyTaskInController que llamó el Controller');
+			this.send('destroyTask', item);
+		}
+	}
 });

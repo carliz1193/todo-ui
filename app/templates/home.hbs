@@ -16,20 +16,26 @@
 			{{tasksCountLabel}}
 		</p>
 
-			<div class="list-group">
+			{{#media-list contentArray=filteredModel
+										destroyTaskOutOfComponent=(action 'destroyTaskInController')
+										as |sectionName currentItem|
+			}}
+				{{#if (eq sectionName 'sectionTitle')  }}
+					{{currentItem.title}}
+				{{/if}}
 
-				{{#each filteredModel as |item|}}
+				{{#if (eq sectionName 'sectionBody')}}
+					{{currentItem.description}}
+				{{/if}}
+			{{/media-list}}
 
-					{{#link-to 'task' item.id class="list-group-item"}}
-						<button {{action 'destroyTask' item on='click' bubbles=false}} class="badge btn">X</button>
+			{{#media-list contentArray=anotherArray as |sectionName currentItem|}}
+				{{#if (eq sectionName 'sectionTitle')  }}
+					{{currentItem}}
+				{{/if}}
+			{{/media-list}}
 
-						<h4>{{item.title}}</h4>
-						<p>{{item.description}}</p>
-					{{/link-to}}
 
-
-					{{/each}}
-			</div>
 
 
 		</div>
