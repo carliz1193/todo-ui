@@ -15,6 +15,7 @@ export default Ember.Controller.extend({
 	tasksCountLabel: Ember.computed('query', 'filteredModel.[]', 'model.[]', function(){
 		let modelLength = this.get('model.length');
 		let filteredModelLength = this.get('filteredModel.length');
+		let query = this.get('query');
 
 		if(!query){ return `${modelLength} tasks`; }
 		else{
