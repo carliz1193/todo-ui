@@ -28,7 +28,7 @@ module.exports = function(defaults) {
 
   // JS
   app.import('vendor/js/bootstrap.min.js');
-  app.import('vendor/js/moment-with-locales.js')
+  app.import('vendor/js/moment-with-locales.js');
   app.import('vendor/js/bootstrap-datetimepicker.min.js');
 
   return app.toTree();

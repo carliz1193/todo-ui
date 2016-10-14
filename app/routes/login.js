@@ -5,11 +5,6 @@ export default Ember.Route.extend({
 
 	actions:{
 		doLogin: function(username, password){
-			// console.log('Llegué a doLogin');
-			// console.log(username);
-			// console.log(password);
-			//
-
 			let loginPromise = this.get('ajax').post('http://localhost:3000/login.json', {
 				data:{
 					username: username,
@@ -23,13 +18,6 @@ export default Ember.Route.extend({
 			}.bind(this)).catch(function(){
 				alert('Datos invalidos');
 			}.bind(this));
-
-			// if(username === 'alumno' && password === '123123'){
-			// 	// Vaya a la ruta home
-			// 	this.transitionTo('home');
-			// } else {
-			// 	alert('Datos invalidos');
-			// }
 		}
 	}
 });

@@ -4,7 +4,7 @@ export default Ember.Route.extend({
 	ajax: Ember.inject.service(),
 
 	model(){
-		// Inicialice un nuevo modelo de tipo Task
+		// Inicializar un nuevo modelo de tipo Task, con atributos vacíos
 		return this.store.createRecord('task', {});
 	},
 
@@ -13,12 +13,12 @@ export default Ember.Route.extend({
 			let currentModel = this.get('currentModel');
 
 			if(currentModel.get('anyFieldEmpty')){
-
 				$('#validationModal').modal('show');
-
 			} else {
+				// Opcion A)
 				let promise = currentModel.save();
 
+				// Opcion B)
 				// let promise = this.get('ajax').post('http://localhost:3000/tasks/crear', {
 				// 	data: {
 				// 		title: this.get('currentModel.title'),
@@ -28,13 +28,11 @@ export default Ember.Route.extend({
 				// });
 
 				promise.then((response)=>{
-					// this.transitionTo('task', {task_id: response.id } );
 					this.transitionTo('home');
 				}).catch(()=>{
 					debugger
 				});
 			}
-
 		}
 	}
 });
