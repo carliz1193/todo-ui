@@ -1,8 +1,19 @@
 import Ember from 'ember';
+// Esto va en todas las rutas a las que se quiera acceder unicamente si esta el usuario autenticado:
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-export default Ember.Route.extend({
+export default Ember.Route.extend(AuthenticatedRouteMixin, {
 	ajax: Ember.inject.service(),
-	// beforeModel
+	session: Ember.inject.service('session'),
+
+	// beforeModel(){
+	// 	if(this.get('session.isAuthenticated')){
+	// 		console.log('isAuthenticated: true')
+	// 	}else{
+	// 		this.transitionTo('login');
+	// 		console.log('isAuthenticated: false')
+	// 	}
+	// },
 	// model
 	// Lo que esta funcion regrese, se va a pasar al template en forma de una
 	// variable llamada "model"

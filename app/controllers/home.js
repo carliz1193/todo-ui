@@ -32,6 +32,7 @@ export default Ember.Controller.extend({
 		destroyTaskInController(item){
 			console.log('Soy el destroyTaskInController que llamó el Controller');
 			this.send('destroyTask', item);
-		}
+		},
+		otroAction(){}
 	}
 });
