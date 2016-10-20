@@ -32,7 +32,7 @@
 										as |sectionName currentItem|
 			}}
 				{{#if (eq sectionName 'sectionTitle')  }}
-					{{upcase currentItem.title}}
+					{{upcase currentItem.title format='capital'}}
 				{{/if}}
 
 				{{#if (eq sectionName 'sectionBody')}}
