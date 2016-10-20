@@ -1,6 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+	queryParams: ['view'],
+	view: null,
+
 	query: null,
 	anotherArray: [1,2,3,4,5],
 	filteredModel: Ember.computed('query', 'model.[]', function(){

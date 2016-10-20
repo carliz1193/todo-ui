@@ -6,6 +6,12 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 	ajax: Ember.inject.service(),
 	session: Ember.inject.service('session'),
 
+	queryParams: {
+		view: {
+			refreshModel: true
+		}
+	},
+
 	// beforeModel(){
 	// 	if(this.get('session.isAuthenticated')){
 	// 		console.log('isAuthenticated: true')
@@ -17,7 +23,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 	// model
 	// Lo que esta funcion regrese, se va a pasar al template en forma de una
 	// variable llamada "model"
-	model: function(){
+	model: function(params){
 		// Opcion A)
 		// Model es un arreglo*
 		// let promise = this.get('ajax').request('http://localhost:3000/tasks/list');
@@ -31,7 +37,15 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 		//
 		// Opcion C)
 		// Model es un arreglo de tipo DS.RecordArray (promise+arreglo)
-		return this.store.findAll('task');
+		let tasksPromise = this.store.findAll('task');
+		return tasksPromise.then((arrayOfTasks)=>{
+				return arrayOfTasks.filter((t)=>{
+					if(params.view === 'past'){
+						return t.get('due_date') < new Date();
+					}
+					return t.get('due_date') >= new Date();
+				});
+			});
 	},
 	// afterModel
 	// actions
