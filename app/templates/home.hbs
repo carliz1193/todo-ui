@@ -32,7 +32,8 @@
 										as |sectionName currentItem|
 			}}
 				{{#if (eq sectionName 'sectionTitle')  }}
-					{{upcase currentItem.title format='capital'}}
+					
+					{{inline-editing value=currentItem.title doSave=(action "guardaTask" currentItem) cancela=(action "cancelate" currentItem)}}
 				{{/if}}
 
 				{{#if (eq sectionName 'sectionBody')}}

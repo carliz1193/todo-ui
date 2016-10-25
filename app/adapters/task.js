@@ -24,5 +24,12 @@ export default DS.RESTAdapter.extend(DataAdapterMixin,{
 		let actionName = 'delete';
 
 		return `/${plural}/${id}/${actionName}`;
+	},
+
+		urlForUpdateRecord(id, modelName, snapshot){
+		let plural = modelName.pluralize();
+		let actionName = 'update';
+
+		return `/${plural}/${id}/${actionName}`;
 	}
 });

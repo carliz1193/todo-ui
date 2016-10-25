@@ -2,12 +2,16 @@
 
 	{{#each contentArray as |item|}}
 
-		{{#link-to 'task' item.id class="list-group-item"}}
+		<div class="list-group-item">
+		<input type="checkbox" 
+ 			id="checkbox-toggle" 
+ 			name="Checkbox" 
+ 			{{action "CheckBox" on="change"}} />
 			<button {{action 'destroyTaskInComponent' item on='click' bubbles=false}} class="badge btn">X</button>
 
 			<h4>{{yield 'sectionTitle' item}}</h4>
 			<p>{{yield 'sectionBody' item}}</p>
-		{{/link-to}}
+		</div>
 
 
 		{{/each}}
