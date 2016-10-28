@@ -25,6 +25,10 @@
 				Mostrar pendientes
 			{{/link-to}}
 
+			{{#link-to 'home' (query-params view='completed') class="btn btn-default"}}
+				Mostrar completos
+			{{/link-to}}
+
 		</p>
 
 			{{#media-list contentArray=filteredModel
@@ -32,8 +36,13 @@
 										as |sectionName currentItem|
 			}}
 				{{#if (eq sectionName 'sectionTitle')  }}
+				<input
+						type="checkbox"
+						checked={{currentItem.complete}}
+						{{action 'toggleCompleteTask' currentItem on='change'}}/>
 					
-					{{inline-editing value=currentItem.title doSave=(action "guardaTask" currentItem) cancela=(action "cancelate" currentItem)}}
+					{{inline-editing value=currentItem.title doSave=(action "guardaTask" currentItem) cancela=(action "cancela" currentItem
+					)}}
 				{{/if}}
 
 				{{#if (eq sectionName 'sectionBody')}}

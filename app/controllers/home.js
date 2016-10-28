@@ -42,9 +42,19 @@ export default Ember.Controller.extend({
 			t.save()
 		},
 
-		cancelate(t){
+		cancela(t){
 			
+		},
+		rollbackTask(task){
+			task.rollbackAttributes();
+		},
+		 
+		toggleCompleteTask(task){
+			task.set('complete', event.target.checked)
+			task.save();
 		}
+
+
 
 	}
 
