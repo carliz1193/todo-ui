@@ -8,6 +8,7 @@
 				<div class="form-group">
 					<label>Title</label>
 					{{input value=model.title class="form-control"}}
+					{{max-lenght contar=model.title.length limite=20 noticeCount=10}}
 				</div>
 
 				<div class="form-group">
@@ -18,6 +19,7 @@
 				<div class="form-group">
 					<label>Description</label>
 					{{textarea value=model.description class="form-control"}}
+					{{max-lenght contar=model.description.length limite=100 noticeCount=10}}
 				</div>
 
 				<button type="submit" class="btn btn-default">Create</button>
@@ -37,7 +39,7 @@
         <h4 class="modal-title">No se pudo guardar</h4>
       </div>
       <div class="modal-body">
-        <p>Hay campos vacíos, debes llenar tood antes de guardar</p>
+        <p>Hay campos vacíos, debes llenar todo antes de guardar</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
